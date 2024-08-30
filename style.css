@@ -11,6 +11,7 @@
         background: #45DFB1;
         padding: 1em;
         font-size: 1em;
+      
         /* display: flex;
         flex-direction: row; */
         /* flex: 1; */
@@ -25,6 +26,7 @@
         flex-direction: column;
         gap: 10px;
         border: 5px solid grey;
+        flex-wrap: wrap;
     }
 
     .operands {
@@ -37,6 +39,7 @@
         padding-right: 10px;
         font-size: 34px;
         font-weight: 700;
+        
     }
 
     .buttons {
