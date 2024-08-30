@@ -9,6 +9,10 @@ function factorial (num) {
     }
  }
 
+//  function to calculate a percentage of a num
+function percentage (num) {
+    return (num / 100).toFixed(2); // to 2 decimal places
+}
 
 let displayValue = '0',
 pendingValue,
@@ -93,9 +97,15 @@ function operate  (e) {
             case '!':
                          pendingValue = Number(displayValue);
                         displayValue = factorial(pendingValue);
-                       display1.innerText = displayValue;
+                       display2.innerText = displayValue;
                         
                     break;
+
+            case '%':
+                pendingValue = Number(displayValue);
+                displayValue = percentage(pendingValue);
+                display2.innerText = displayValue;
+                break;
 
             case '=':
                 evalStringArray.push(displayValue);
