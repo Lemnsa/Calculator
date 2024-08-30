@@ -91,7 +91,7 @@ function operate  (e) {
                    display1.innerText = displayValue;
             
                     evalStringArray.push(pendingValue);
-                    evalStringArray.push('x');
+                    evalStringArray.push('*');
                     break;
 
             case '!':
