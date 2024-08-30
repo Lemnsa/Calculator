@@ -1,4 +1,15 @@
 
+// function to get a factorial of a number
+function factorial (num) {
+    if (num === 1 || num === 0) {
+        return 1;
+    }
+    else {
+        return num * factorial(num - 1);
+    }
+ }
+
+
 let displayValue = '0',
 pendingValue,
 evalStringArray = [];
@@ -80,12 +91,10 @@ function operate  (e) {
                     break;
 
             case '!':
-                        pendingValue = displayValue;
-                        displayValue = '0';
+                         pendingValue = Number(displayValue);
+                        displayValue = factorial(pendingValue);
                        display1.innerText = displayValue;
-                
-                        evalStringArray.push(pendingValue);
-                        evalStringArray.push('!');
+                        
                     break;
 
             case '=':
