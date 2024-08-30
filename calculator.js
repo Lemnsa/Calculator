@@ -36,6 +36,9 @@ const divide = function (a, b) {
     if(b === 0) {
         return 'Critical Error!';
     }
+    else if (a === 0) {
+        return 0;
+    }
     return a / b;
 }
 
