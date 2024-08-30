@@ -33,6 +33,8 @@ let display2 = document.querySelector(".screen");
 
 let clearButton = document.querySelector(".buttons .red");
 
+let decimalButton = document.querySelector(".green.decimal");
+
 // adding an eventlistener to each number
     numbersArray.forEach(btn => 
         btn.addEventListener("click", displayContent)
@@ -133,3 +135,19 @@ function operate  (e) {
     evalStringArray = [];
     display1.innerHTML = displayValue;
  });
+
+
+// add decimal to a number
+
+decimalButton.addEventListener("click", addDecimalPoint);
+
+function addDecimalPoint() {
+    if(displayValue.includes('.')) {
+        return;
+    }
+    else {
+        displayValue += '.';
+    }
+
+    display1.innerText = displayValue;
+}
