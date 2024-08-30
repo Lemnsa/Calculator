@@ -1,50 +1,105 @@
-const add = function (a, b) {
-    return a + b;
-}
-// console.log("the sum is "+ add(2,4));
 
-const subtract = function (a, b) {
-    return a - b;
-}
-// console.log("the minus is "+ subtract(2,4));
+let displayValue = '0',
+pendingValue,
+evalStringArray = [];
 
-const multiply = function (a, b) {
-    return a * b;
-}
-// console.log("the product is "+ multiply(2,4));
 
-const divide = function (a, b) {
-    return a / b;
-}
-// console.log("the division is "+ divide(2,4));
-// debugger;
-let num1 = Number(prompt("Enter a number")),
-operator = prompt("choose an operator sign"),
-num2 = Number(prompt("Enter the second number"));
 
-let answer = operate(operator,num1,num2);
-console.log(answer);
+// convert div node list to array
+let numbers = document.querySelectorAll(".number");
+let numbersArray = Array.from(numbers);
+console.log(numbers)
+let operators = document.querySelectorAll("div.operator");
+console.log(operators)
+let operatorsArray = Array.from(operators);
 
-function operate (op, a, b) {
-    switch (op) {
-        default:
-           return alert("You have to enter a valid operation!");
-            break;
-        case '+':
-            return add(a,b);
-            // console.log("we adding "+add(a,b));
-            break;
-        case '-':
-            return subtract(a, b);
-            // console.log("subtract");
-            break;
-        case '/':
-            return divide(a, b);
-            // console.log("we are dividing ");
-            break;
-        case 'x':
-           return multiply(a, b);
-            // console.log("multiply");
-            break;
+
+let display1 = document.querySelector(".first");
+let displayOperator = document.querySelector(".operator");
+let display2 = document.querySelector(".screen");
+
+// adding an eventlistener to each number
+    numbersArray.forEach(btn => 
+        btn.addEventListener("click", displayContent)
+    )
+
+// adding an event listener to the operators
+operatorsArray.forEach(operator => 
+        operator.addEventListener("click", operate)
+    
+)
+
+function displayContent (e) {
+    let btnText = e.target.innerText;
+    if (displayValue === '0') {
+        displayValue = '';
     }
+    displayValue += btnText;
+    display1.innerText = displayValue;
+}
+
+// operation 
+function operate  (e) {
+    let operator = e.target.innerText;
+
+    switch(operator) {
+        case '+':
+            pendingValue = displayValue;
+            displayValue = '0';
+           display1.innerText = displayValue;
+
+            evalStringArray.push(pendingValue);
+            evalStringArray.push('+');
+            break;
+
+            case '-':
+                pendingValue = displayValue;
+                displayValue = '0';
+               display1.innerText = displayValue;
+        
+                evalStringArray.push(pendingValue);
+                evalStringArray.push('-');
+                break;
+
+            case '/':
+                pendingValue = displayValue;
+                displayValue = '0';
+               display1.innerText = displayValue;
+
+                evalStringArray.push(pendingValue);
+                evalStringArray.push('/');
+                break;
+
+            case 'x':
+                    pendingValue = displayValue;
+                    displayValue = '0';
+                   display1.innerText = displayValue;
+            
+                    evalStringArray.push(pendingValue);
+                    evalStringArray.push('x');
+                    break;
+
+            case '!':
+                        pendingValue = displayValue;
+                        displayValue = '0';
+                       display1.innerText = displayValue;
+                
+                        evalStringArray.push(pendingValue);
+                        evalStringArray.push('!');
+                    break;
+
+            case '=':
+                evalStringArray.push(displayValue);
+                var evaluation = eval(evalStringArray.join(''));
+                displayValue = evaluation + '';
+                display2.innerText = displayValue;
+                console.log(evalStringArray);
+                evalStringArray = []; // empty the array
+                break;
+            
+            default: 
+                 break;
+    }
+
+
 }
