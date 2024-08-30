@@ -1,3 +1,41 @@
+// eval function
+function myEval (arr) {
+    let operator = arr[1];
+    let a = Number(arr[0]);
+    let b = Number(arr[2]);
+
+    if(operator === '+') {
+        return add(a, b);
+    }
+    else if(operator === '-') {
+        return subtract(a, b);
+    }
+    else if (operator === 'x') {
+        return multiply(a, b);
+    }
+    else {
+        return divide(a, b);
+    }
+}
+
+// operation functions
+
+const add = function (a, b) {
+    return a + b;
+}
+
+const subtract = function (a, b) {
+    return a - b;
+}
+
+const multiply = function (a, b) {
+    return a * b;
+}
+
+const divide = function (a, b) {
+    return a / b;
+}
+
 
 // function to get a factorial of a number
 function factorial (num) {
@@ -111,7 +149,7 @@ function operate  (e) {
 
             case '=':
                 evalStringArray.push(displayValue);
-                var evaluation = eval(evalStringArray.join(''));
+                var evaluation = myEval(evalStringArray);
                 displayValue = evaluation + '';
                 display2.innerText = displayValue;
                 console.log(evalStringArray);
