@@ -23,15 +23,15 @@ evalStringArray = [];
 // convert div node list to array
 let numbers = document.querySelectorAll(".number");
 let numbersArray = Array.from(numbers);
-console.log(numbers)
 let operators = document.querySelectorAll("div.operator");
-console.log(operators)
 let operatorsArray = Array.from(operators);
 
 
 let display1 = document.querySelector(".first");
 let displayOperator = document.querySelector(".operator");
 let display2 = document.querySelector(".screen");
+
+let clearButton = document.querySelector(".buttons .red");
 
 // adding an eventlistener to each number
     numbersArray.forEach(btn => 
@@ -122,3 +122,14 @@ function operate  (e) {
 
 
 }
+
+
+// clear everything
+
+ clearButton.addEventListener("click", function (){
+    displayValue = '0';
+    display2.innerHTML = displayValue;
+    pendingValue = undefined;
+    evalStringArray = [];
+    display1.innerHTML = displayValue;
+ });
