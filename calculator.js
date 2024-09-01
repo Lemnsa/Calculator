@@ -10,7 +10,7 @@ function myEval (arr) {
     else if(operator === '-') {
         return subtract(a, b);
     }
-    else if (operator === 'x') {
+    else if (operator === '*') {
         return multiply(a, b);
     }
     else {
